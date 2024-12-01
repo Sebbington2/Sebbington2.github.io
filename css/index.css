@@ -1,0 +1,42 @@
+.horizontalDiv{
+    display: flex;
+    flex-direction: row;
+    
+}
+.verticalDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContainer{
+    width:33%;
+}
+
+form{
+    width: 50%;
+}
+
+.pokedexArea{
+    margin-top: 15px;
+    width: 50%;
+    height: 150px;
+} 
+.formRow{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+label {
+    align-self: flex-start;
+    margin-right: 15px;
+    margin-bottom: 16px;
+    height: 20px;
+}
+input{
+    margin-bottom: 18px;
+    background: #f2f2f2;
+    border-radius: 3px;
+    border: none;
+}

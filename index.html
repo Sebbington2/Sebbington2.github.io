@@ -3,9 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokedex Randomizer</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <h1>Pokedex Randomizer</h1>
+    <div class="verticalDiv">
+        <img src="./img/PokedexRandomizerTitle.png">
+        <h3>Enter your Pokemon's name and stats and get a randomized Pokedex entry for it!</h3>
+        <form>
+            <div class="verticalDiv">
+            <div class ="horizontalDiv"> 
+                <div class="verticalDiv">
+                    <label for="txtName">Name</label>
+                    <label for="txtType">Type</label>
+                    <label for="txtBaseHp">Base HP</label>
+                    <label for="txtBaseAtk">Base Attack</label>
+                    <label for="txtSpAtk">Base Special Attack</label>
+                    <label for="txtBaseDef">Base Defense</label>   
+                    <label for="txtBaseSpDef">Base Special Defense</label>
+                    <label for="txtSpeed">Base Speed</label>
+                </div>
+                <div class="verticalDiv">
+                    <input type="text" id="txtName" placeholder="Beedrill">
+                    <input type="text" id="txtType" placeholder="Poison">
+                    <input type="number" id="txtBaseHp" placeholder="50">
+      
+                        <input type="number" id="txtBaseAtk" placeholder="50">
+ 
+                        <input type="number" id="txtSpAtk" placeholder="50">
+
+                        <input type="number" id="txtBaseDef" placeholder="50">
+                        <input type="number" id="txtBaseSpDef" placeholder="50">
+                        <input type="number" id="txtSpeed" placeholder="50">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="verticalDiv">
+                <div class="formRow">
+                    <label for="txtName">Name</label>
+                    <input type="text" id="txtName" placeholder="Beedrill">
+                </div>
+                <div>
+                    <label for="txtType">Type</label>
+                    <input type="text" id="txtType" placeholder="Poison">
+                </div>
+                <h3>Pokemon Base Stats</h3>
+                <div>
+                    <label for="txtBaseHp">Base HP</label>
+                    <input type="number" id="txtBaseHp" placeholder="50">
+                </div>
+                <div>
+                    <label for="txtBaseAtk">Base Attack</label>
+                    <input type="number" id="txtBaseAtk" placeholder="50">
+                </div>
+                <div>
+                    <label for="txtSpAtk">Base Special Attack</label>
+                    <input type="number" id="txtSpAtk" placeholder="50">
+                </div>
+                <div>
+                    <label for="txtBaseDef">Base Defense</label>
+                    <input type="number" id="txtBaseDef" placeholder="50">
+                </div>
+                <div>
+                    <label for="txtBaseSpDef">Base Special Defense</label>
+                    <input type="number" id="txtBaseSpDef" placeholder="50">
+                </div>
+                <div>
+                    <label for="txtSpeed">Base Speed</label>
+                    <input type="number" id="txtSpeed" placeholder="50">
+                </div>
+
+            </div> -->
+        </form>
+
+        <div>
+            <button type="button">Randomize!</button>
+        </div>
+        
+        <textarea class ="pokedexArea" placeholder="Your generated pokedex entry goes here."></textarea>
+    </div>
+    </div>
+    <div class="mainContainer">
+
+    </div>  
 </body>
 </html>
