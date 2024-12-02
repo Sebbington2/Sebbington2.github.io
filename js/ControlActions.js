@@ -1,6 +1,6 @@
 function ControlActions() {
 	//Ruta base del API
-	this.URL_API = "http://18.216.216.219/";
+	this.URL_API = "https://pokedexapi.duckdns.org/";
 
 	this.GetUrlApiService = function (service) {
 		return this.URL_API + service;
