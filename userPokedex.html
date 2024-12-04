@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex Randomizer</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
+    <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+
+    <script src="./js/ControlActions.js"  asp-append-version="true"></script>
+    <script src="./js/Pokedex.js"></script>
+            <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="verticalDiv">
+        <div class="horizontalDiv toolBar">
+            <a href="/userPokedex.html"><img src="./img/myPokedexButton.png"></a>
+            <a><img src="./img/LogOutButton.png"></a>
+        </div>
+        <a href="index.html" class="verticalDiv">
+            <img style="" class="titleImage"  src="./img/PokedexRandomizerTitle.png">
+        </a>
+        <h3>View and manage your Pokedex</h3>
+        <div class="horizontalDiv">
+    
+            <table id="tblPokedex">
+                <thead>
+                    <tr>
+                        <th>Pokemon ID</th>
+                        <th>Type</th>
+                        <th>Entry</th>
+                      
+                        <th>Base Atk</th>
+                        <th>Base Sp Atk</th>
+                        <th>Base Def</th>
+                        <th>Base Sp Def</th>
+                        <th>Base Speed</th>
+                        <th>Base HP</th>
+                    </tr>
+                </thead>
+           
+            </table>
+            <div class="verticalDiv"> 
+                <img id="btnUpdate" class="menuImage" src="./img/UpdateButton.png">
+                <img  id="btnDelete" class="menuImage"  src="./img/DeleteButton.png">
+            
+            </div>
+        </div>
+        <input style="display:none" id="txtPokemonId" type="text">
+        <input style="display:none" id="txtType" type="text">
+        <input style="display:none" id="txtPokedexEntry" type="text">
+        <input style="display:none" id="txtBaseAtk" type="text">
+        <input style="display:none" id="txtBaseSpAtk" type="text">
+        <input style="display:none" id="txtBaseDef" type="text">
+        <input style="display:none" id="txtBaseSpDef" type="text">
+        <input style="display:none" id="txtBaseSpeed" type="text">
+        <input style="display:none" id="txtBaseHP" type="text">
+
+
+    </div>
+</body>
+</html>

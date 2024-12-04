@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
     <script src="./js/ControlActions.js"  asp-append-version="true"></script>
-    <script src="./js/Pokedex.js"></script>
+    <script src="./js/Update.js"></script>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
         <a href="index.html" class="verticalDiv">
             <img style="" class="titleImage"  src="./img/PokedexRandomizerTitle.png">
         </a>
-        <h3>Enter your Pokemon's name and stats and get a randomized Pokedex entry for it!</h3>
+        <h3> Update your Pokemon's information</h3>
         <form>
 
            
@@ -30,6 +30,7 @@
                 <div class="verticalDiv">
                     <label for="txtName">Name</label>
                     <label for="txtType">Type</label>
+                    <label for="pokedexAreaTxt">Pokedex Entry </label>
                     <label for="txtBaseHp">Base HP</label>
                     <label for="txtBaseAtk">Base Attack</label>
                     <label for="txtSpAtk">Base Special Attack</label>
@@ -40,15 +41,16 @@
                 <div class="verticalDiv">
                     <input type="text" id="txtName" placeholder="Beedrill">
                     <input type="text" id="txtType" placeholder="Poison">
+                    <textarea id="pokedexAreaTxt" placeholder="Your generated pokedex entry goes here."></textarea>
                     <input type="number" id="txtBaseHp" placeholder="50">
       
-                        <input type="number" id="txtBaseAtk" placeholder="50">
- 
-                        <input type="number" id="txtSpAtk" placeholder="50">
+                    <input type="number" id="txtBaseAtk" placeholder="50">
 
-                        <input type="number" id="txtBaseDef" placeholder="50">
-                        <input type="number" id="txtBaseSpDef" placeholder="50">
-                        <input type="number" id="txtSpeed" placeholder="50">
+                    <input type="number" id="txtSpAtk" placeholder="50">
+
+                    <input type="number" id="txtBaseDef" placeholder="50">
+                    <input type="number" id="txtBaseSpDef" placeholder="50">
+                    <input type="number" id="txtBaseSpeed" placeholder="50">
                     </div>
                 </div>
             </div>
@@ -56,10 +58,10 @@
         </form>
 
         <div>
-            <button type="button" id="btnRandomize">Randomize!</button>
+            <img  class="menuImage" id="btnUpdate" src="./img/UpdateButton.png">
         </div>
         
-        <textarea id="pokedexAreaTxt" class ="pokedexArea" placeholder="Your generated pokedex entry goes here."></textarea>
+      
     </div>
     </div>
     <div class="mainContainer">

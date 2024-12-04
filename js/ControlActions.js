@@ -154,31 +154,37 @@ function ControlActions() {
 			});
 	};
 
-	this.DeleteToAPI = function (service, data, callBackFunction) {
-		$.delete(this.GetUrlApiService(service), data)
-			.done(function (response) {
-				Swal.fire(
-					'Good job!',
-					'Transaction completed!',
-					'success'
-				);
-				if (callBackFunction) {
-					callBackFunction(response);
-				}
-			})
-			.fail(function (response) {
-				var data = response.responseJSON;
-				var errors = data.errors;
-				var errorMessages = Object.values(errors).flat();
-				var message = errorMessages.join("<br/> ");
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					html: message,
-					footer: 'UCenfotec'
-				});
-			});
-	};
+    this.DeleteToAPI = function (service, data, callBackFunction) {
+        $.delete(this.GetUrlApiService(service), data)
+            .done(function (response) {
+                Swal.fire(
+                    'Good job!',
+                    'Pokemon Deleted!',
+                    'success'
+                ).then((result) => {
+                    if (result.isConfirmed) {
+                        // Reload the page when the user hits "OK"
+                        location.reload();
+                    }
+    
+                    if (callBackFunction) {
+                        callBackFunction(response);
+                    }
+                });
+            })
+            .fail(function (response) {
+                var data = response.responseJSON;
+                var errors = data.errors;
+                var errorMessages = Object.values(errors).flat();
+                var message = errorMessages.join("<br/> ");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    html: message,
+                    footer: 'UCenfotec'
+                });
+            });
+    };
 
 	this.GetToApi = function (service, callBackFunction) {
 		$.get(this.GetUrlApiService(service), function (response) {

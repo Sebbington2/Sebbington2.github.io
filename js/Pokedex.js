@@ -3,15 +3,23 @@
 function PokedexViewController() {
     this.ViewName = "Pokedex";
     this.ApiBaseEndPoint = "pokedex";
-
+    this.selectedPokemon = {};
     //Metodo Constructor de la vista
     this.InitView = function () {
+        var vc = new PokedexViewController();
         console.log("Pokedex view init!!!");
         //bind del click del buton con el metodo create
 
         $("#btnRandomize").click(function () {
-            var vc = new PokedexViewController();
             vc.Create();
+        });
+        $("#btnDelete").click(function () {
+           
+            vc.Delete();
+        });
+        $("#btnUpdate").click(function () {
+           
+            vc.Update();
         });
 
         // $("#btnUpdate").click(function () {
@@ -30,7 +38,7 @@ function PokedexViewController() {
 
         //carga de la tabla
 
-        // this.LoadTable();
+        this.LoadTable();
     }
 
     //Metodo de creacion de usuarios
@@ -76,6 +84,20 @@ function PokedexViewController() {
 
 
     }
+    this.Delete = async function() {
+        let endPointRoute = this.ApiBaseEndPoint;
+
+        var pokemon = {
+            userId: "test@gmail.com",
+            pokemonId: $('#txtPokemonId').val()// Always available now
+        };
+        console.log(this.selectedPokemon);
+        console.log(pokemon);
+        let ca = new ControlActions();
+        ca.DeleteToAPI(endPointRoute, pokemon, function() {
+            console.log("Pokemon Deleted");
+        });
+    };
     // this.ValidateDiscountCreate = function (coupon) {
     //     var ca = new ControlAction();
 
@@ -162,35 +184,38 @@ function PokedexViewController() {
     //         resolve(true);
     //     });
     // };
-    // this.Update = async function () {
+    this.Update = async function () {
+       // Gather data from inputs
+        let pokemon = {
+            pokemonId: $("#txtPokemonId").val(),
+            type: $("#txtType").val(),
+            pokedexEntry: $("#txtPokedexEntry").val(),
+            baseHp: $("#txtBaseHP").val(),
+            baseAtk: $("#txtBaseAtk").val(),
+            baseSpAtk: $("#txtBaseSpAtk").val(),
+            baseDef: $("#txtBaseDef").val(),
+            baseSpDef: $("#txtBaseSpDef").val(),
+            baseSpeed: $("#txtBaseSpeed").val()
+        };
+        console.log(pokemon);
+        // Construct the query string
+        let queryString = `?pokemonId=${encodeURIComponent(pokemon.pokemonId)}&type=${encodeURIComponent(pokemon.type)}&pokedexEntry=${encodeURIComponent(pokemon.pokedexEntry)}&baseHp=${encodeURIComponent(pokemon.baseHp)}&baseAtk=${encodeURIComponent(pokemon.baseAtk)}&baseSpAtk=${encodeURIComponent(pokemon.baseSpAtk)}&baseDef=${encodeURIComponent(pokemon.baseDef)}&baseSpDef=${encodeURIComponent(pokemon.baseSpDef)}&baseSpeed=${encodeURIComponent(pokemon.baseSpeed)}`;
 
-    //     var discount = {};
+        // Redirect to the new page with query parameters
+        window.location.href = `update.html${queryString}`;
 
-    //     discount.discountPercentage = $("#txtPercent").val();
+        // var ca = new ControlAction();
 
-    //     discount.userCategory = $("#slcDestinataries").val();
-    //     //se debe ajustar para no enviar defaults
-    //     discount.id = $("#txtId").val();
-    //     console.log(discount.id);
-    //     discount.startDate = $("#txtStart").val();
-    //     discount.endDate = $("#txtFin").val();
-    //     discount.isActive = $("#slcState").val();
+        // var endPointRoute = this.ApiBaseEndPoint;
 
-    //     if (!(await this.ValidateDiscountUpdate(discount))) {
-    //         return; // Stop execution if validation fails
-    //     }
-    //     var ca = new ControlAction();
+        //  ca.PutToAPI(endPointRoute, pokemon, function () {
 
-    //     var endPointRoute = this.ApiBaseEndPoint + "/Update";
-
-    //     ca.PutToAPI(endPointRoute, discount, function () {
-
-    //         ca.SweetAlert('Accion completada', 'Descuento Actualizado', 'success').then(() => {
-    //             // Refresh the page
-    //             location.reload();
-    //         });
-    //     });
-    // }
+        //     ca.SweetAlert('Accion completada', 'Descuento Actualizado', 'success').then(() => {
+        //         // Refresh the page
+        //         location.reload();
+        //     });
+        // });
+    }
 
 
     // this.ResetForm = function () {
@@ -200,68 +225,77 @@ function PokedexViewController() {
     //     $("#slcDestinataries").val('');
     //     $("#slcState").val('');
     // }
-    // this.LoadTable = function () {
-    //     var ca = new ControlAction();
+    this.LoadTable = function () {
+        var ca = new ControlActions();
 
-    //     //Construimos la ruta del API para consumir el servicio de Retrieve
+        //Construimos la ruta del API para consumir el servicio de Retrieve
 
-    //     var urlService = ca.GetUrlApiService(this.ApiBaseEndPoint + "/RetrieveAll");
+        var urlService = ca.GetUrlApiService(this.ApiBaseEndPoint);
 
-    //     //Definir las columnas a extraer del json que devuelve el API
+        console.log(urlService);
 
-    //     //<th>Id</th>
-    //     //                 <th>Name</th>
-    //     //                 <th>Description</th>
-    //     //                 <th>Category</th>
-    //     //                 <th>Price</th>
+        //Definir las columnas a extraer del json que devuelve el API
 
-    //     var columns = [];
-    //     columns[0] = { 'data': 'id' };
-    //     columns[1] = { 'data': 'discountPercentage' };
-    //     columns[2] = { 'data': 'userCategory' };
-    //     columns[3] = { 'data': 'startDate' };
-    //     columns[4] = { 'data': 'endDate' };
-    //     columns[5] = { 'data': 'isActive' }
-    //     columns[6] = { 'data': 'creationDate' }
+        //<th>Id</th>
+        //                 <th>Name</th>
+        //                 <th>Description</th>
+        //                 <th>Category</th>
+        //                 <th>Price</th>
 
-    //     $('#tblDiscounts').dataTable({
-    //         "ajax": {
-    //             "url": urlService,
-    //             "dataSrc": ""
-    //         },
-    //         "columns": columns,
-    //         "language": {
-    //             "url": "//cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json"
-    //         }
-    //     });
+        var columns = [];
+        columns[0] = { 'data': 'PokemonId' };
+        columns[1] = { 'data': 'Type' };      
+        columns[2] = { 'data': 'PokedexEntry' };
+        columns[3] = { 'data': 'BaseAtk' };
+        columns[4] = { 'data': 'BaseSpAtk' };
+        columns[5] = { 'data': 'BaseDef' }
+        columns[6] = { 'data': 'BaseSpDef' }
+        columns[7] = { 'data': 'BaseSpeed' }
+        columns[8] = { 'data': 'BaseHP' };
 
-
-
-    //     $('#tblDiscounts tbody').on('click', 'tr', function () {
-
-    //         console.log('Testing click event');
+        $('#tblPokedex').dataTable({
+            select: true,
+            "pageLength": 2, 
+            "lengthMenu": [2, 3, 5, 10],
+            "ajax": {
+                "url": urlService + "?userId=test@gmail.com", // Append query parameters
+                "dataSrc": "data"
+            },
+            "columns": columns
+        });
 
 
+        let self = this;
+        $('#tblPokedex tbody').on('click', 'tr', function () {
 
-    //         //Seleccionar la fila a la que dio click
-    //         var row = $(this).closest('tr');
+            console.log('Testing click event');
 
-    //         //Extraemos la data de la tabla
-    //         var DTO = $('#tblDiscounts').DataTable().row(row).data();
 
-    //         //Mapeo de valores del DTO al formulario.
-    //         $('#txtId').val(DTO.id);
-    //         $('#slcDestinataries').val(DTO.userCategory).change();
-    //         $('#txtPercent').val(DTO.discountPercentage);
 
-    //         var onlyDate = DTO.endDate.split("T");
-    //         $('#txtFin').val(onlyDate[0]);
-    //         var onlyDate2 = DTO.startDate.split("T");
-    //         $('#txtStart').val(onlyDate2[0]);
-    //         $('#slcState').val(DTO.isActive).change();
-    //     });
-    // }
+            //Seleccionar la fila a la que dio click
+            var row = $(this).closest('tr');
 
+            //Extraemos la data de la tabla
+            var DTO = $('#tblPokedex').DataTable().row(row).data();
+
+            $('#txtPokemonId').val(DTO.PokemonId);
+            $('#txtType').val(DTO.Type);
+            $('#txtPokedexEntry').val(DTO.PokedexEntry);
+            $('#txtBaseAtk').val(DTO.BaseAtk);
+            $('#txtBaseSpAtk').val(DTO.BaseSpAtk);
+            $('#txtBaseDef').val(DTO.BaseDef);
+            $('#txtBaseSpDef').val(DTO.BaseSpDef);
+            $('#txtBaseSpeed').val(DTO.BaseSpeed);
+            $('#txtBaseHP').val(DTO.BaseHP);
+
+            
+
+            //Mapeo de valores del DTO al formulario.
+            
+        });
+    
+
+}
 }
 
 

@@ -1,7 +1,7 @@
 .horizontalDiv{
     display: flex;
     flex-direction: row;
-    
+    justify-content: center;
 }
 .verticalDiv{
     display: flex;
@@ -9,10 +9,37 @@
     align-items: center;
 }
 
-.mainContainer{
-    width:33%;
+.toolBar{
+    height:100px;
+    
+    flex-direction:row;
+    display: flex;
+    align-items:space-evenly;
+}
+.toolbar > a{
+    margin: 20px;
 }
 
+table{
+    max-width: 100px;
+}
+a{
+  display: flex;
+  align-items: center;
+}
+.titleImage{
+    width: 50%;
+    align-self: center;
+}
+.toolBar > a> img{
+    height:50%;
+    align-self: flex-start;
+}
+
+.menuImage{
+    width: 100px;
+    height: 40px;
+}
 form{
     width: 50%;
 }
@@ -28,7 +55,12 @@ form{
     width: 100%;
 }
 
+textarea{
+    margin-bottom: 5px;
+}
 label {
+    /* flex: 0 0 120px; */
+
     align-self: flex-start;
     margin-right: 15px;
     margin-bottom: 16px;
@@ -39,4 +71,9 @@ input{
     background: #f2f2f2;
     border-radius: 3px;
     border: none;
+}
+
+#tblPokedex td {
+    vertical-align: top !important;
+    text-align: left !important; /* Optional: change to 'left' if needed */
 }
